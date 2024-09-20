@@ -40,9 +40,9 @@ group = "com.papayacoders.draw"
 version = "1.0.3"
 
 
-tasks.named("publishToMavenLocal") {
-    dependsOn("assembleRelease")
-}
+//tasks.named("publishToMavenLocal") {
+//    dependsOn("assembleRelease")
+//}
 
 dependencies {
 
