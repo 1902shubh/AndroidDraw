@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    `maven-publish`
 }
 
 android {
@@ -32,6 +33,15 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+}
+
+
+group = "com.papayacoders.draw"
+version = "1.0.3"
+
+
+tasks.named("publishToMavenLocal") {
+    dependsOn("assembleRelease")
 }
 
 dependencies {
