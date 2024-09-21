@@ -26,6 +26,11 @@ android {
             )
         }
     }
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -37,33 +42,24 @@ android {
 
 
 group = "com.papayacoders.draw"
-version = "1.0.8"
+version = "1.0.9"
 
 
-//tasks.named("publishToMavenLocal") {
-//    dependsOn("assembleRelease")
+publishing {
+    publications {
+        create<MavenPublication>("release") {
+            
+            afterEvaluate {
+                from(components["release"])
+            }
+            
+            groupId = "com.papayacoders.draw"
+            artifactId = "AndroidDraw"
+            version = "1.0.9" // Ensure this matches your versioning
 
-// Configure the publishing
-//publishing {
-//    publications {
-//        create<MavenPublication>("release") {
-//            from(components["release"]) // Adjust if you're publishing a different component
-//
-//            groupId = "com.papayacoders.draw"
-//            artifactId = "AndroidDraw"
-//            version = "1.0.6" // Ensure this matches your versioning
-//
-//            // Optionally, specify POM details
-//            pom {
-//                name.set("AndroidDraw")
-//                description.set("Description of your project")
-//                url.set("https://github.com/1902shubh/AndroidDraw")
-//
-//                // Add developers, licenses, etc., if needed
-//            }
-//        }
-//    }
-//}
+        }
+    }
+}
 
 
 dependencies {
